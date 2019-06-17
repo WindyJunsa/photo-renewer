@@ -10,7 +10,7 @@ import os
 os.environ['CUDA_VISABLE_DEVICES']='1'
 from tqdm import tqdm
 
-images = glob.glob('data/facades/train/*.jpg') + glob.glob('data/facades/val/*.jpg')
+images = glob.glob('/input_dir/datasets/muted_cars/gray_train/*.jpg')
 print(len(images))
 
 X_all = []
@@ -166,3 +166,5 @@ plt.legend(loc='upper right')
 plt.savefig('Loss.png')
 plt.show()
 
+saver = tf.train.Saver()
+save_path = saver.save(sess, '/output_dir/gray_model', global_step=100000)
